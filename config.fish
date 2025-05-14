@@ -25,6 +25,7 @@ set -Ux VISUAL nvim
 # Aliases
 alias gst="git status"
 alias gsw="git switch"
+alias gcl="git clone"
 alias ga="git add"
 alias gps="git push"
 alias gpl="git pull"
@@ -32,6 +33,7 @@ alias update="sudo pacman -Sy"
 alias upgrade="sudo pacman -Su"
 alias vim=~/.local/bin/lvim
 alias nvim=~/.local/bin/lvim
+alias v=~/.local/bin/lvim
 alias lsa="ls -als"
 alias ff="fastfetch"
 alias grep='grep --color=auto'
@@ -47,4 +49,4 @@ alias activate='source .venv/bin/activate.fish'
 alias y='yazi'
 alias projects='cd ~/Projects/'
 alias downloads='cd ~/Downloads/ && ls -alsh'
-alias fishconfig='nvim .config/fish/config.fish'
+alias fishconfig='nvim ~/.config/fish/config.fish'
