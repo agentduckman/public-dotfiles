@@ -1,0 +1,13 @@
+[general]
+
+[window]
+padding = { x = 2, y = 0 }
+opacity = 0.9
+blur = true
+
+[font]
+size = 9.0
+
+[terminal.shell]
+program = "tmux"
+
