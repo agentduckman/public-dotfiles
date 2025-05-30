@@ -1,9 +1,20 @@
-# fish_config theme choose "Dracula Official"
-set fish_greeting
+function fish_greeting
+    # Set variables for dynamic content
+    set uptime (uptime -p | awk -F " " '{print $2" "$3" "$4" "$5" "$6" "$7}')
+    set private_ip (ip -4 addr show | grep inet | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1 | head -n 1)
+    set public_ip (curl -s https://api.ipify.org)
+    set tunnel_ip (ip -4 addr show tun0 2>/dev/null | grep inet | awk '{print $2}' | cut -d'/' -f1)
 
-# function fish_prompt
-#   echo (set_color magenta)(whoami)@(hostname)(set_color white)"::"(set_color green)(pwd)" " 
-# end
+    # Display the greeting with colors and bold text using printf (fish echo does not support -e)
+    printf "\033[1;32mSystem uptime:\033[0m \033[1;36m%s\033[0m\n" $uptime
+    printf "\033[1;33mPrivate IP:\033[0m \033[1;35m%s\033[0m\n" $private_ip
+    printf "\033[1;33mPublic IP:\033[0m \033[1;35m%s\033[0m\n" $public_ip
+
+    # Check if Tunnel IP exists and display it
+    if test -n "$tunnel_ip"
+        echo -e "\033[1;33mTunnel IP:\033[0m \033[1;36m$tunnel_ip\033[0m"
+    end
+end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
